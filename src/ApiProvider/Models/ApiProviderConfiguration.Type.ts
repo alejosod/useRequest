@@ -1,4 +1,6 @@
+import ApiProviderServiceType from './ApiProviderService.Type';
+
 export default interface ApiProviderConfigurationType {
-  serviceName: string;
-  route: string;
+  baseUrl: string;
+  services: Array<ApiProviderServiceType>;
 }

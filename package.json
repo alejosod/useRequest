@@ -4,7 +4,8 @@
   "description": "Hooks and Context to handle API requests",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",
