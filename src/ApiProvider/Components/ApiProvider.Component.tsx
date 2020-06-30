@@ -1,10 +1,17 @@
 import React from 'react';
 
-import ApiProviderPropsType from '../Models/ApiProviderProps.Type';
+import { ApiProviderPropsType, ApiProviderDefaultProps } from '../Models';
 import ApiProviderContext from './ApiProvider.Context';
+import { validateConfiguration } from '../Helpers';
 
-const ApiProvider: React.FunctionComponent = (props: ApiProviderPropsType) => {
+// (configurationName) => (verb) => (axiosInstance) => (body, params) => axiosInstance(body,params)
+
+const ApiProvider:
+React.FunctionComponent<ApiProviderPropsType> = (props: ApiProviderPropsType) => {
   const { children, configuration } = props;
+
+  validateConfiguration(configuration);
+
 
   return (
     <ApiProviderContext.Provider value={{}}>
@@ -12,5 +19,7 @@ const ApiProvider: React.FunctionComponent = (props: ApiProviderPropsType) => {
     </ApiProviderContext.Provider>
   );
 };
+
+ApiProvider.defaultProps = ApiProviderDefaultProps;
 
 export default ApiProvider;

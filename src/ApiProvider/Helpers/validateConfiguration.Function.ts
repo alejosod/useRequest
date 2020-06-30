@@ -2,6 +2,7 @@ import ApiProviderConfigurationType from '../Models/ApiProviderConfiguration.Typ
 
 /**
  * Function that validate the configuration for the Api Provider
+ * @throws Error - If configuration or url is not valid
  * @param configuration { ApiProviderConfigurationType } - Configuration object
  * @return { boolean } - valid configuration
  */

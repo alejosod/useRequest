@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { validateConfiguration } from '../Helpers';
 
 describe('validateConfiguration Function', () => {
