@@ -1,20 +1,27 @@
 import React from 'react';
+import axios from 'axios';
+import { addQueries, addQueryParams } from '../../UrlAssembler';
 
-import { ApiProviderPropsType, ApiProviderDefaultProps } from '../Models';
 import ApiProviderContext from './ApiProvider.Context';
-import { validateConfiguration } from '../Helpers';
-
-// (configurationName) => (verb) => (axiosInstance) => (body, params) => axiosInstance(body,params)
+import { ApiProviderPropsType, ApiProviderDefaultProps } from '../Models';
+import { createServiceMap, validateConfiguration } from '../Helpers';
 
 const ApiProvider:
 React.FunctionComponent<ApiProviderPropsType> = (props: ApiProviderPropsType) => {
   const { children, configuration } = props;
 
   validateConfiguration(configuration);
+  const serviceMap = createServiceMap(configuration);
 
+  const contextValue = {
+    axios,
+    serviceMap,
+    addQueries,
+    addQueryParams,
+  };
 
   return (
-    <ApiProviderContext.Provider value={{}}>
+    <ApiProviderContext.Provider value={contextValue}>
       {children}
     </ApiProviderContext.Provider>
   );
