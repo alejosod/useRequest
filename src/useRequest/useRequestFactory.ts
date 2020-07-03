@@ -41,19 +41,18 @@ export default (verb: HttpVerbs): Function =>
     // This will throw an error at runTime
     checkForServiceName(serviceName);
     const createRoute = createRouteAssemble(serviceName);
-    const createAxiosIntance = attachAxiosConfig(config, verb);
+    const axiosInstance = attachAxiosConfig(config, verb);
 
     const [hookState, dispatch] = useReducer(reducer, initialHookState);
 
     const request = async (params: RequestParamsType): Promise<void> => {
       const { query, routeParams, body } = params;
 
-      const route = createRoute(routeParams, query);
-      const axiosInstance = createAxiosIntance(body);
+      const url = createRoute(routeParams, query);
 
       dispatch(setLoading());
       try {
-        const response = await axiosInstance(route);
+        const response = await axiosInstance.request({ url, data: body });
         if (response) dispatch(setSuccess(response));
       } catch (e) {
         dispatch(setError(e));
