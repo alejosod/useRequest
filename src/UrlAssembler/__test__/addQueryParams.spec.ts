@@ -3,7 +3,7 @@ import addQueryParams from "../AddQueryParams.Function";
 
 describe('addQueryParams', () => {
 
-    it('Should throw an error if we provide invalid route type', () => {
+    it('Should throw an error if we provide \invalid route type', () => {
         try {
             addQueryParams(5)
         } catch (error) {

@@ -46,9 +46,9 @@ export default (verb: HttpVerbs): Function =>
     const [hookState, dispatch] = useReducer(reducer, initialHookState);
 
     const request = async (params: RequestParamsType): Promise<void> => {
-      const { routeParams, query, body } = params;
+      const { query, routeParams, body } = params;
 
-      const route = createRoute(query, routeParams);
+      const route = createRoute(routeParams, query);
       const axiosInstance = createAxiosIntance(body);
 
       dispatch(setLoading());

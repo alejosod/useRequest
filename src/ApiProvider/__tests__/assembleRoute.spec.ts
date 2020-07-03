@@ -48,7 +48,7 @@ describe('assembleRoute', () => {
   it('Should throw an Error if the serviceName is not available', () => {
     try {
       const serviceMap = new Map();
-      serviceMap.set('test', 'test');
+      serviceMap.set('test', { route: 'test' });
 
       const selectServiceName = assembleRoute(serviceMap);
       selectServiceName('test1');
@@ -60,7 +60,7 @@ describe('assembleRoute', () => {
   it('Should throw an Error if a routeName is missing on ParamsObject', () => {
     try {
       const serviceMap = new Map();
-      serviceMap.set('test', '/test/:testParams/:error');
+      serviceMap.set('test', { route: '/test/:testParams/:error' });
 
       const selectServiceName = assembleRoute(serviceMap);
       const createRoute = selectServiceName('test');
@@ -75,7 +75,7 @@ describe('assembleRoute', () => {
 
   it('Should return the correct Route assemble', () => {
     const serviceMap = new Map();
-    serviceMap.set('test', '/test/:testParams/secondRoute/:error');
+    serviceMap.set('test', { route: '/test/:testParams/secondRoute/:error' });
 
     const selectServiceName = assembleRoute(serviceMap);
     const createRoute = selectServiceName('test');
