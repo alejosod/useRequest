@@ -11,11 +11,11 @@ describe('addQueryParams', () => {
         }
     })
 
-    it('Should throw an error if all the expected params on the route are not replaced', () => {
+    it('Should throw an error if all the expected params on the route are not present in he queryParamsObject', () => {
         try {
-            addQueryParams('/:test1/:test2',{ test1: 'replace'})
+            addQueryParams('/test/:test1/:error',{ test1: 'replace'})
         } catch (err) {
-            expect(error.message).toBe('Query params provided do not correspond to those required on route')
+            expect(err.message).toBe('Query params provided do not correspond to those required on route')
         }
     })
 
@@ -59,7 +59,6 @@ describe('addQueryParams', () => {
         expect(result).toBe(expected)
 
     })
-
 
     it('Should return the route with the params replaced even if the query contain params that are not presented in the route', () => {
         const testRoute = '/:test/:test'

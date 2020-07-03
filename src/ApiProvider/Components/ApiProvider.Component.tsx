@@ -1,10 +1,11 @@
 import React from 'react';
-import axios from 'axios';
-import { addQueries, addQueryParams } from '../../UrlAssembler';
 
 import ApiProviderContext from './ApiProvider.Context';
 import { ApiProviderPropsType, ApiProviderDefaultProps } from '../Models';
-import { createServiceMap, validateConfiguration } from '../Helpers';
+import {
+  createServiceMap, validateConfiguration, checkForServiceNameFactory,
+  attachAxiosConfig, assembleRoute,
+} from '../Helpers';
 
 const ApiProvider:
 React.FunctionComponent<ApiProviderPropsType> = (props: ApiProviderPropsType) => {
@@ -12,12 +13,13 @@ React.FunctionComponent<ApiProviderPropsType> = (props: ApiProviderPropsType) =>
 
   validateConfiguration(configuration);
   const serviceMap = createServiceMap(configuration);
+  const checkForServiceName = checkForServiceNameFactory(serviceMap);
+  const createRouteAssemble = assembleRoute(serviceMap);
 
   const contextValue = {
-    axios,
-    serviceMap,
-    addQueries,
-    addQueryParams,
+    checkForServiceName,
+    attachAxiosConfig,
+    createRouteAssemble,
   };
 
   return (

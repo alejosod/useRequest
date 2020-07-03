@@ -15,7 +15,7 @@ function addQueryParams(route: string, queryParamsObject?: object) {
       : accum.replace(regex, `/${value}/`);
   }, route);
 
-  const paramsRegex = new RegExp('/:/w');
+  const paramsRegex = new RegExp('\/:[a-zA-Z0-9]+', 'g');
 
   if (paramsRegex.test(routeReplaced)) throw new Error('Query params provided do not correspond to those required on route');
 

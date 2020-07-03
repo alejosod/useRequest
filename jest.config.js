@@ -17,7 +17,6 @@ module.exports = {
     '@testing-library/jest-dom/extend-expect',
     '<rootDir>/src/__test__/config/importJestDOM.ts',
   ],
-
   // Module file extensions for importing
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   globals: {
@@ -25,4 +24,5 @@ module.exports = {
       diagnostics: false,
     },
   },
+  coveragePathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/src/'],
 };
