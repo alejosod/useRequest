@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig, Method } from 'axios';
 
 export default (config: AxiosRequestConfig, verb: Method) => (body?: object) => {
-  if (!body) return axios.create(config || {});
+  if (!body) return axios.create({ ...config, method: verb } || {});
   return axios.create({
     ...config,
     method: verb,
