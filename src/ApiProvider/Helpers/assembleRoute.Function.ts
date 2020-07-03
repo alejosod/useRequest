@@ -9,7 +9,7 @@ import { addQueryParams, addQueries } from '../../UrlAssembler';
  * @throws { Error } - if ServiceMap is not intance of a Map
  * @return Factory function to attach the name to the next function.
  */
-export default (serviceMap: Map<string, string>): Function => {
+export default (serviceMap: Map<string, any>): Function => {
   if(!serviceMap) throw new Error('Service Map should be provided')
   if(!(serviceMap instanceof Map)) throw new Error('Service Map should be instance of a Map')
 
@@ -34,7 +34,7 @@ export default (serviceMap: Map<string, string>): Function => {
      */
     return (params: object, query: object, ): string => {
 
-      const route = serviceMap.get(serviceName);
+      const {route} = serviceMap.get(serviceName);
 
       const routeWithParams = addQueryParams(route, params);
       return addQueries(routeWithParams, query);

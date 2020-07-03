@@ -1,5 +1,5 @@
 export default interface RequestParamsType {
   body?: object;
-  routeParams?: object;
+  params?: object;
   query?: object;
 }

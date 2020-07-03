@@ -1,3 +1,9 @@
 import React from 'react';
 
-export default React.createContext({});
+interface ApiProviderContextValue {
+  checkForServiceName?: Function;
+  attachAxiosConfig?: Function;
+  createRouteAssemble?: Function;
+}
+
+export default React.createContext<ApiProviderContextValue>({});
