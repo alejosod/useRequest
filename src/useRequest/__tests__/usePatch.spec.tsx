@@ -22,6 +22,9 @@ describe('useGet', () => {
     act(() => {
       put({
         params: {
+          userId: 2,
+        },
+        body: {
           name: 'morpheus',
           job: 'zion resident',
         },

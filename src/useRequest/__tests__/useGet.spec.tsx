@@ -17,7 +17,7 @@ describe('useGet', () => {
     const get = result.current[1];
 
     act(() => {
-      get({ routeParams: { userId: 2 } });
+      get({ params: { userId: 2 } });
     });
 
     waitForNextUpdate();
@@ -32,7 +32,7 @@ describe('useGet', () => {
     const get = result.current[1];
 
     act(() => {
-      get({ routeParams: { userId: 23 } });
+      get({ params: { userId: 23 } });
     });
 
     waitForNextUpdate();

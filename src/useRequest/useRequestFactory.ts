@@ -45,10 +45,10 @@ export default (verb: HttpVerbs): Function =>
 
     const [hookState, dispatch] = useReducer(reducer, initialHookState);
 
-    const request = async (params: RequestParamsType): Promise<void> => {
-      const { query, routeParams, body } = params;
+    const request = async (requestParams: RequestParamsType): Promise<void> => {
+      const { query, params, body } = requestParams;
 
-      const url = createRoute(routeParams, query);
+      const url = createRoute(params, query);
 
       dispatch(setLoading());
       try {
