@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios, { AxiosRequestConfig, Method } from 'axios';
 
-export default (config: object, verb: string) => (body?: object) => {
+export default (config: AxiosRequestConfig, verb: Method) => (body?: object) => {
   if (!body) return axios.create(config || {});
   return axios.create({
     ...config,
