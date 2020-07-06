@@ -9,6 +9,7 @@ import {
 
 const ApiProvider:
 React.FunctionComponent<ApiProviderPropsType> = (props: ApiProviderPropsType) => {
+  console.log('here')
   const { children, configuration } = props;
 
   validateConfiguration(configuration);
